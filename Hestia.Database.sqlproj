@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Hestia.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootNamespace>Hestia.Database</RootNamespace>
+    <AssemblyName>Hestia.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatTSqlWarningsAsErrors>False</TreatTSqlWarningsAsErrors>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Schemas\" />
+    <Folder Include="Tables\" />
+    <Folder Include="Tables\auth\" />
+    <Folder Include="Tables\listing\" />
+    <Folder Include="Tables\crm\" />
+    <Folder Include="Tables\search\" />
+    <Folder Include="Tables\txn\" />
+    <Folder Include="Tables\doc\" />
+    <Folder Include="Tables\comms\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="_docs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Schemas -->
+    <Build Include="Schemas\auth.sql" />
+    <Build Include="Schemas\listing.sql" />
+    <Build Include="Schemas\crm.sql" />
+    <Build Include="Schemas\search.sql" />
+    <Build Include="Schemas\txn.sql" />
+    <Build Include="Schemas\doc.sql" />
+    <Build Include="Schemas\comms.sql" />
+    <!-- auth tables (lookup first, then entities) -->
+    <Build Include="Tables\auth\auth.Role.sql" />
+    <Build Include="Tables\auth\auth.Brokerage.sql" />
+    <Build Include="Tables\auth\auth.User.sql" />
+    <Build Include="Tables\auth\auth.UserInvitation.sql" />
+    <Build Include="Tables\auth\auth.AuditLog.sql" />
+    <Build Include="Tables\auth\auth.BrokerageFeatureFlag.sql" />
+    <Build Include="Tables\auth\auth.UserRefreshToken.sql" />
+    <!-- listing tables -->
+    <Build Include="Tables\listing\listing.PropertyType.sql" />
+    <Build Include="Tables\listing\listing.ListingStatus.sql" />
+    <Build Include="Tables\listing\listing.Listing.sql" />
+    <Build Include="Tables\listing\listing.ListingPhoto.sql" />
+    <Build Include="Tables\listing\listing.ListingHistory.sql" />
+    <!-- crm tables -->
+    <Build Include="Tables\crm\crm.LeadSource.sql" />
+    <Build Include="Tables\crm\crm.LeadType.sql" />
+    <Build Include="Tables\crm\crm.PipelineStage.sql" />
+    <Build Include="Tables\crm\crm.TaskPriority.sql" />
+    <Build Include="Tables\crm\crm.Lead.sql" />
+    <Build Include="Tables\crm\crm.LeadStageHistory.sql" />
+    <Build Include="Tables\crm\crm.LeadNote.sql" />
+    <Build Include="Tables\crm\crm.LeadTask.sql" />
+    <Build Include="Tables\crm\crm.LeadTag.sql" />
+    <Build Include="Tables\crm\crm.LeadTagAssignment.sql" />
+    <Build Include="Tables\crm\crm.LeadPropertyInterest.sql" />
+    <Build Include="Tables\crm\crm.LeadWebhookIngest.sql" />
+    <!-- search tables -->
+    <Build Include="Tables\search\search.AlertFrequency.sql" />
+    <Build Include="Tables\search\search.SavedSearch.sql" />
+    <Build Include="Tables\search\search.SavedSearchAlert.sql" />
+    <Build Include="Tables\search\search.SavedListing.sql" />
+    <Build Include="Tables\search\search.ListingViewEvent.sql" />
+    <!-- txn tables -->
+    <Build Include="Tables\txn\txn.TransactionType.sql" />
+    <Build Include="Tables\txn\txn.TransactionStatus.sql" />
+    <Build Include="Tables\txn\txn.FinancingType.sql" />
+    <Build Include="Tables\txn\txn.OfferStatus.sql" />
+    <Build Include="Tables\txn\txn.TerminationReason.sql" />
+    <Build Include="Tables\txn\txn.MilestoneTemplate.sql" />
+    <Build Include="Tables\txn\txn.Transaction.sql" />
+    <Build Include="Tables\txn\txn.Offer.sql" />
+    <Build Include="Tables\txn\txn.Milestone.sql" />
+    <Build Include="Tables\txn\txn.DualAgencyAcknowledgment.sql" />
+    <!-- doc tables -->
+    <Build Include="Tables\doc\doc.AccessLevel.sql" />
+    <Build Include="Tables\doc\doc.SignatureStatus.sql" />
+    <Build Include="Tables\doc\doc.Document.sql" />
+    <Build Include="Tables\doc\doc.DocumentVersion.sql" />
+    <Build Include="Tables\doc\doc.SignatureRequest.sql" />
+    <Build Include="Tables\doc\doc.SignatureRequestSigner.sql" />
+    <Build Include="Tables\doc\doc.AuditLog.sql" />
+    <Build Include="Tables\doc\doc.DocumentTemplate.sql" />
+    <Build Include="Tables\doc\doc.TemplateField.sql" />
+    <!-- comms tables -->
+    <Build Include="Tables\comms\comms.NotificationType.sql" />
+    <Build Include="Tables\comms\comms.DeliveryChannel.sql" />
+    <Build Include="Tables\comms\comms.ShowingRequestStatus.sql" />
+    <Build Include="Tables\comms\comms.NotificationPreference.sql" />
+    <Build Include="Tables\comms\comms.TransactionMessage.sql" />
+    <Build Include="Tables\comms\comms.NotificationEvent.sql" />
+    <Build Include="Tables\comms\comms.NotificationDelivery.sql" />
+    <Build Include="Tables\comms\comms.ShowingRequest.sql" />
+    <Build Include="Tables\comms\comms.ShowingResponse.sql" />
+    <Build Include="Tables\comms\comms.EmailCampaign.sql" />
+    <Build Include="Tables\comms\comms.EmailCampaignRecipient.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" Condition="'$(VisualStudioVersion)' != '' and '$(SQLDBExtensionsRefPath)' == ''" />
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" Condition="'$(SQLDBExtensionsRefPath)' != ''" />
+</Project>

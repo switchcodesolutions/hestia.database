@@ -1,0 +1,28 @@
+## SSDT build output
+bin/
+obj/
+
+## Publish profiles with local connection strings — exclude per-dev files
+*.DEVLOCAL.publish.xml
+*.LOCAL.publish.xml
+*.user
+
+## DacPac artifacts (generated, not source)
+*.dacpac
+
+## Rider / VS / VSCode
+.vs/
+.vscode/
+.idea/
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Logs & temp
+*.log
+*.tmp
+*.temp
+
+## OS
+.DS_Store
+Thumbs.db
